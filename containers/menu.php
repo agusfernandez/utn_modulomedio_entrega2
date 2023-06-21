@@ -6,6 +6,6 @@
     <a class="nav-link text-dark" href="verpedidos.php">Ver Pedidos</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link text-dark" href="code/salir.php">Salir</a>
+    <a class="nav-link text-dark" href="salir.php">Salir</a>
   </li>
 </ul>
