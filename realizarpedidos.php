@@ -1,4 +1,20 @@
-<?php include 'containers/header.php'?>
+<?php 
+session_start();
+if(isset($_SESSION['admin'])){
+    include 'containers/header.php';
+
+    $n1= rand (0,9);
+    $n2= rand (0,9);
+    $n3= rand (0,9);
+    $text = array('a', 's', 't', 'f' , 'l', 'g');
+    $symbol =array ('-', '%', '!', '#', '@');
+    $mezcla_text= rand (0,6);
+    $mezcla_symbol= rand (0,4);
+
+    $_SESSION['codigo_captcha'] = $n1  . $text[$mezcla_text] . $n2 . $symbol[$mezcla_symbol] . $n3;
+
+?>
+
 
 <body>
     <?php include 'containers/menu.php'?>
@@ -33,20 +49,30 @@
                             <label for="imagen" class="form-label"> Cargar tu diseño</label>
                             <input class="form-control" type="file" id="formFile" name="image">
                          </div>
+
+                         <div class="mb-3">
+                           <img src="captcha.php" alt="captcha">
+                            <input type="text"  class="form-control" name="captcha" placeholder="Ingrese el captcha"> 
+                        </div>
                         
                         <button type="submit" class="btn btn-dark" value="submit">Enviar</button>
+
                         <?php
 
                             if (isset($_GET['error_img'])){
-                                echo "<div class='alert alert-danger' role='alert'>Imagen incorrecta</div>";
+                                echo "<div class='alert alert-danger' role='alert'>Imagen Incorrecta</div>";
                             }
 
                             if (isset($_GET['oka'])){
                                 echo "<div class='alert alert-success' role='alert'>Nueva orden agregada</div>";
+                                //cierro sesion
+                            } } else {
+                                header('Location:index.php');
+                                
                             }
 
-                            if (isset($_GET['error'])){
-                                echo "<div class='alert alert-success' role='alert'>error</div>";
+                            if (isset($_GET['error_codigo'])){
+                                echo "<div class='alert alert-danger' role='alert'>Codigo de verificación incorrecto</div>";
                             }
                         ?>
                     </form>
