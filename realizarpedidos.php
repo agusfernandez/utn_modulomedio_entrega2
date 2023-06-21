@@ -22,7 +22,7 @@ if(isset($_SESSION['admin'])){
     <div>
             <div class="row align-items-center" style="height: 100vh;">
                 <div class="mx-auto col-10 col-md-8 col-lg-6">
-                    <form action="cargarpedidos.php" method="post">
+                    <form action="cargarpedidos.php" method="post" enctype="multipart/form-data">
                         <h3>Datos del Nuevo Pedido</h3>
                         <div class="input-group mb-3">
                              <input type="text" class="form-control" name="clientename" placeholder="Ingrese su nombre" required>

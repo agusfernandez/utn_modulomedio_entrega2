@@ -25,7 +25,7 @@ if(($type_img != 'image/jpg' && $type_img != 'image/png' && $type_img != 'image/
 } else {
    move_uploaded_file($tmp_img, $path);
    mysqli_query($conexion_db, "INSERT INTO orders VALUE (DEFAULT, '$clientename', '$clientemail' , '$productname','$qty', '$color', '$description' , '$name_img')");
-   header('Location: realizarpedidos.php?ok');
+   header('Location: realizarpedidos.php?oka');
 } 
 
 mysqli_close($conexion_db);
