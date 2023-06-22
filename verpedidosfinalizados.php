@@ -5,12 +5,12 @@
     
 
     <div class="container">
-        <div class="row ">
+        <div class="row">
 
             <?php include ('conexion.php');
         
-                  $consulta_db = mysqli_query($conexion_db, "SELECT * FROM orders");
-                  while($mostrardatos = mysqli_fetch_assoc($consulta_db)){
+                  $consulta_db_finalizado = mysqli_query($conexion_db, "SELECT * FROM orders WHERE state='finalizado'");
+                  while($mostrardatos = mysqli_fetch_assoc($consulta_db_finalizado)){
 
                   ?>
 
@@ -26,10 +26,8 @@
                         <p class="card-text"><?php echo 'Color: ' . $mostrardatos['color']?></p>
                         <p class="card-text"><?php echo 'Descripción: ' . $mostrardatos['description']?></p>
                     </div>
-
                     <div class="card-footer">
                             <span class="state badge text-bg-info" role="alert"><?php echo $mostrardatos['state']?></span>
-                            <a href="editarestado.php?id=<?php echo $mostrardatos['id']?>">Finalizar Pedido</a>
                     </div>
                     <a href="eliminarorden.php?id=<?php echo $mostrardatos['id']?>" class="btn  btn-dark">Eliminar Orden</a>
                 </div>

@@ -13,6 +13,7 @@ $productname= $_POST['productname'];
 $qty=$_POST['qty'];
 $color=$_POST['color'];
 $description= $_POST['description'];
+$state = $_POST['state'];
 
 $name_img = $_FILES['image']['name'];
 $size_img = $_FILES['image']['size'];
@@ -24,7 +25,7 @@ if(($type_img != 'image/jpg' && $type_img != 'image/png' && $type_img != 'image/
     header('Location: realizarpedidos.php?error_img');
 } else {
    move_uploaded_file($tmp_img, $path);
-   mysqli_query($conexion_db, "INSERT INTO orders VALUE (DEFAULT, '$clientename', '$clientemail' , '$productname','$qty', '$color', '$description' , '$name_img')");
+   mysqli_query($conexion_db, "INSERT INTO orders VALUE (DEFAULT, '$clientename', '$clientemail' , '$productname','$qty', '$color', '$description' , '$name_img', '$state')");
    header('Location: realizarpedidos.php?oka');
 } 
 

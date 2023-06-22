@@ -3,3 +3,32 @@
     margin:0;
     box-sizing: border-box;
 }
+
+.nav{
+    margin-bottom: 30px!important;
+}
+
+.captcha{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+}
+
+p{
+    margin-bottom: 0px!important;
+}
+
+
+.card-text{
+    font-size: 14px;
+}
+
+
+
+.card-footer a{
+    color: #000!important;
+}
+
+a{
+    font-size: 12px;
+}

@@ -8,7 +8,7 @@ if(isset($_SESSION['admin'])){
     $n3= rand (0,9);
     $text = array('a', 's', 't', 'f' , 'l', 'g');
     $symbol =array ('-', '%', '!', '#', '@');
-    $mezcla_text= rand (0,6);
+    $mezcla_text= rand (0,4);
     $mezcla_symbol= rand (0,4);
 
     $_SESSION['codigo_captcha'] = $n1  . $text[$mezcla_text] . $n2 . $symbol[$mezcla_symbol] . $n3;
@@ -50,17 +50,21 @@ if(isset($_SESSION['admin'])){
                             <input class="form-control" type="file" id="formFile" name="image">
                          </div>
 
-                         <div class="mb-3">
+                         <div class="mb-3 captcha">
                            <img src="captcha.php" alt="captcha">
                             <input type="text"  class="form-control" name="captcha" placeholder="Ingrese el captcha"> 
                         </div>
+                        <select name="state" class="form-select">
+                            <option value="procesando">procesando</option>
+                            <option value="finalizado">finalizado</option>
+                        </select>
                         
                         <button type="submit" class="btn btn-dark" value="submit">Enviar</button>
 
                         <?php
 
                             if (isset($_GET['error_img'])){
-                                echo "<div class='alert alert-danger' role='alert'>Imagen Incorrecta</div>";
+                                echo "<div class='alert alert-danger' role='alert'>Imagen Incorrecta. Verifique formato y el tamaño no puede ser mayor de 200kb </div>";
                             }
 
                             if (isset($_GET['oka'])){
@@ -72,7 +76,7 @@ if(isset($_SESSION['admin'])){
                             }
 
                             if (isset($_GET['error_codigo'])){
-                                echo "<div class='alert alert-danger' role='alert'>Codigo de verificación incorrecto</div>";
+                                echo "<div class='alert alert-danger' role='alert'>Codigo de verificación incorrecto, revisar captcha</div>";
                             }
                         ?>
                     </form>
